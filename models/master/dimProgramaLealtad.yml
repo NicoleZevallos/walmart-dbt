@@ -1,0 +1,28 @@
+version: 2
+
+models:
+  - name: dimProgramaLealtad
+    description: "Datos sobre el programa de lealtad y la tienda preferida de cada cliente"
+    columns:
+      - name: customer_id
+        description: "Identificador único del cliente"
+        tests:
+          - not_null
+          - unique
+          - relationships:
+              to: ref('dimCliente')
+              field: customer_id
+
+      - name: store_id
+        description: "Tienda preferida del cliente"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dimTienda')
+              field: store_id
+
+      - name: loyalty_program
+        description: "Participación en el programa de lealtad a la tienda"
+        tests:
+          - accepted_values:
+              values: ["Yes", "No"]

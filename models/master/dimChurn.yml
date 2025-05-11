@@ -1,0 +1,21 @@
+version: 2
+
+models:
+  - name: dimChurn
+    description: "Tabla dimensional que indica si un cliente ha hecho churn o no."
+    columns:
+      - name: customer_id
+        description: "Identificador único del cliente"
+        tests:
+          - not_null
+          - unique
+          - relationships:
+              to: ref('dimCliente')
+              field: customer_id
+
+      - name: churn_status
+        description: "Estado de churn: indica si el cliente sigue activo o no"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['Yes', 'No']

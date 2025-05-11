@@ -1,0 +1,16 @@
+version: 2
+
+models:
+  - name: dimTienda
+    description: "Dimensión de tienda con id y ubicación"
+    columns:
+      - name: store_id
+        description: "Identificador único de la tienda"
+        tests:
+          - not_null
+          - unique
+
+      - name: store_location
+        description: "Ubicación de la tienda"
+        tests:
+          - not_null

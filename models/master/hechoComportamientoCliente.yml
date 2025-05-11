@@ -1,0 +1,85 @@
+version: 2
+
+models:
+  - name: hechoComportamientoCliente
+    description: "Tabla de hechos que resume el comportamiento de compra y engagement de cada cliente"
+    columns:
+      - name: customer_id
+        description: "Identificador del cliente"
+        tests:
+          - not_null
+          - unique
+          - relationships:
+              to: ref('dimCliente')
+              field: customer_id
+
+      - name: loyalty_program
+        description: "Participación en programa de lealtad"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ["Yes", "No"]
+
+      - name: customer_support_calls
+        description: "Cantidad de llamadas al soporte"
+        tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              min_value: 0
+              inclusive: true
+
+      - name: website_visits
+        description: "Visitas al sitio web"
+        tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              min_value: 0
+              inclusive: true
+
+      - name: churn_status
+        description: "Estado de churn"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ["Yes", "No"]
+
+      - name: fecha_compra
+        description: "Fecha de última compra"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dimTiempo')
+              field: fecha
+
+      - name: avg_purchase_value
+        description: "Valor promedio de compra"
+        tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              min_value: 0
+              inclusive: true
+
+      - name: avg_discount_used
+        description: "Descuento promedio usado"
+        tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              min_value: 0
+              max_value: 1
+              inclusive: true
+
+      - name: online_purchases
+        description: "Número de compras online"
+        tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              min_value: 0
+              inclusive: true
+
+      - name: in_store_purchases
+        description: "Número de compras en tienda"
+        tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              min_value: 0
+              inclusive: true

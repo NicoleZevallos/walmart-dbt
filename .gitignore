@@ -1,0 +1,12 @@
+# DBT
+target/
+dbt_modules/
+
+# Python
+__pycache__/
+*.pyc
+.env
+
+# Otros
+.vscode/
+.DS_Store

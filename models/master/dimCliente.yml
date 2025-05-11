@@ -1,0 +1,16 @@
+version: 2
+
+models:
+  - name: dimCliente
+    description: "Tabla dimensión con información de los clientes"
+    columns:
+      - name: customer_id
+        description: "Identificador único del cliente"
+        tests:
+          - not_null
+          - unique
+
+      - name: customer_city
+        description: "Ciudad del cliente"
+        tests:
+          - not_null
