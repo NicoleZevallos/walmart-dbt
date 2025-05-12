@@ -18,6 +18,8 @@ jobs:
         with:
           python-version: 3.12
 
+      - name: Install ODBC Driver 17 for SQL Server
+        run: sudo ACCEPT_EULA=Y apt-get install msodbcsql18 -y
       - name: Instalar dependencias
         run: |
           python -m pip install --upgrade pip
