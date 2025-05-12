@@ -1,0 +1,44 @@
+name: Run DBT on Push
+
+on:
+  push:
+    branches:
+      - main
+      - '**'
+jobs:
+  dbt-job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clonar el repositorio
+        uses: actions/checkout@v3
+
+      - name: Configurar Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.10
+
+      - name: Instalar dependencias
+        run: |
+          python -m pip install --upgrade pip
+          pip install dbt-sqlserver
+
+      - name: Crear archivo profiles.yml desde secret
+        run: |
+          mkdir -p ~/.dbt
+          echo "${{ secrets.DBT_PROFILES }}" > ~/.dbt/profiles.yml
+
+      - name: Instalar paquetes de DBT
+        run: dbt deps
+
+      - name: Ejecutar dbt para todos los targets
+        run: |
+          dbt debug --target raw
+          dbt debug --target staging
+          dbt debug --target master
+
+      - name: Ejecutar dbt run
+        run: dbt run
+
+      - name: Ejecutar dbt test
+        run: dbt test
