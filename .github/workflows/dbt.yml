@@ -18,8 +18,14 @@ jobs:
         with:
           python-version: 3.12
 
-      - name: Install ODBC Driver 17 for SQL Server
-        run: sudo ACCEPT_EULA=Y apt-get install msodbcsql18 -y
+      - name: Instalar ODBC Driver 17 for SQL Server
+        uses: Yarden-zamir/install-mssql-odbc@main
+        with:
+          ODBC_VERSION: 17
+          DISTRO: Alpine
+          DOCS_URL: https://yarden-zamir.com/alternate-docs-path.md
+          REMOVE_EXITS: true
+
       - name: Instalar dependencias
         run: |
           python -m pip install --upgrade pip
