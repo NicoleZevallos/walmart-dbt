@@ -16,14 +16,11 @@ clean-targets:
 models:
   walmart_dbt:
     raw:
-      +database: WALMART_RAW
       +schema: raw
     staging:
-      +database: WALMART_STAGING
       +schema: staging
       +materialized: table
     master:
-      +database: WALMART_MASTER
       +schema: master
       +materialized: table
 
