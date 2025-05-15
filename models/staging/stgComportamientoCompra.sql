@@ -1,6 +1,6 @@
 with raw as (
   select *
-  from {{ ref('raw_walmart_data') }}
+  from raw.raw_walmart_data
 )
 
 select
