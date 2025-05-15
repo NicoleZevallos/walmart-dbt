@@ -1,19 +1,16 @@
-with numbers as (
-  select 0 as n
-  union all
-  select n + 1 from numbers where n + 1 < 365
-),
-fechas as (
-  select dateadd(day, n, cast('2021-01-01' as date)) as fecha
-  from numbers
+WITH fechas AS (
+  SELECT 
+    DATEADD(DAY, number, '2021-01-01') AS fecha
+  FROM master.dbo.spt_values
+  WHERE type = 'P'
+    AND number <= DATEDIFF(DAY, '2021-01-01', '2021-12-31')
 )
-select
+SELECT
   fecha,
-  year(fecha) as año,
-  month(fecha) as mes,
-  day(fecha) as dia,
-  datename(weekday, fecha) as nombre_dia,
-  datename(month, fecha) as nombre_mes,
-  datepart(quarter, fecha) as trimestre
-from fechas
-option (maxrecursion 365)
+  YEAR(fecha) AS anio,
+  MONTH(fecha) AS mes,
+  DAY(fecha) AS dia,
+  DATENAME(WEEKDAY, fecha) AS nombre_dia,
+  DATENAME(MONTH, fecha) AS nombre_mes,
+  DATEPART(QUARTER, fecha) AS trimestre
+FROM fechas
