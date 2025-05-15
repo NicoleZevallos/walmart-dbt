@@ -16,4 +16,3 @@ select
 
 from numeros
 where n < datediff(day, '2021-01-01', '2021-12-31') + 1
-order by fecha
