@@ -1,0 +1,42 @@
+
+  
+  
+
+  
+  USE [WALMART_RAW];
+  EXEC('create view 
+
+    [dbt_test__audit.testview_957f028e5233801bacc7d9436e5aa95b]
+   as 
+    
+    
+
+select
+    store_id as unique_field,
+    count(*) as n_records
+
+from "WALMART_MASTER"."master"."dimTienda"
+where store_id is not null
+group by store_id
+having count(*) > 1
+
+
+;')
+  select
+    count(*) as failures,
+    case when count(*) != 0
+      then 'true' else 'false' end as should_warn,
+    case when count(*) != 0
+      then 'true' else 'false' end as should_error
+  from (
+    select  * from 
+
+    [dbt_test__audit.testview_957f028e5233801bacc7d9436e5aa95b]
+  
+  ) dbt_internal_test;
+
+  USE [WALMART_RAW];
+  EXEC('drop view 
+
+    [dbt_test__audit.testview_957f028e5233801bacc7d9436e5aa95b]
+  ;')
