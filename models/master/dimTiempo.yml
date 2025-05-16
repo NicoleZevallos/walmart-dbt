@@ -1,0 +1,61 @@
+version: 2
+
+models:
+  - name: dimTiempo
+    description: "Dimensión de fechas, con atributos como año, trimestre, mes, día y nombres de mes y día"
+    columns:
+      - name: fecha
+        description: "Fecha completa"
+        tests:
+          - not_null
+          - unique
+
+      - name: año
+        description: "Año de la fecha"
+        tests:
+          - not_null
+
+      - name: trimestre
+        description: "Trimestre del año"
+        tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              min_value: 1
+              max_value: 4
+              inclusive: true
+
+      - name: mes
+        description: "Mes del año (1-12)"
+        tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              min_value: 1
+              max_value: 12
+              inclusive: true
+
+      - name: dia
+        description: "Día del mes (1-31)"
+        tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              min_value: 1
+              max_value: 31
+              inclusive: true
+
+      - name: nombre_mes
+        description: "Nombre del mes (en inglés)"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+
+      - name: nombre_dia
+        description: "Nombre del día de la semana (en inglés)"
+        tests:
+          - not_null
+          - accepted_values:
+<<<<<<< HEAD
+              values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+=======
+              values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+>>>>>>> 7993812 (Primer commit del proyecto walmart_dbt)

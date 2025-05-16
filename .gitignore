@@ -1,0 +1,20 @@
+<<<<<<< HEAD
+# DBT
+target/
+dbt_modules/
+
+# Python
+__pycache__/
+*.pyc
+.env
+
+# Otros
+.vscode/
+.DS_Store
+=======
+
+target/
+dbt_packages/
+logs/
+>>>>>>> 7993812 (Primer commit del proyecto walmart_dbt)
+seeds/raw_walmart_data.csv 

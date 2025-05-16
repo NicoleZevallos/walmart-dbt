@@ -1,0 +1,36 @@
+version: 2
+
+models:
+  - name: dimEngagementDigital
+    description: "Información sobre el engagement digital de los clientes"
+    columns:
+      - name: customer_id
+        description: "Identificador único del cliente"
+        tests:
+          - not_null
+          - unique
+<<<<<<< HEAD
+          - relationships:
+              to: ref('dimCliente')
+              field: customer_id
+=======
+        relationships:
+          - to: ref('dimCliente')
+            field: customer_id
+>>>>>>> 7993812 (Primer commit del proyecto walmart_dbt)
+
+      - name: app_usage
+        description: "Nivel de uso de la aplicación"
+        tests:
+          - accepted_values:
+              values: ["High", "Medium", "Low"]
+
+      - name: social_media_engagement
+        description: "Nivel de interacción en redes sociales"
+        tests:
+          - accepted_values:
+<<<<<<< HEAD
+              values: ["High", "Medium", "Low"]
+=======
+              values: ["High", "Medium", "Low"]
+>>>>>>> 7993812 (Primer commit del proyecto walmart_dbt)

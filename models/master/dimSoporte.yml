@@ -1,0 +1,32 @@
+version: 2
+
+models:
+  - name: dimSoporte
+    description: "Cantidad de llamadas al soporte realizadas por cada cliente"
+    columns:
+      - name: customer_id
+        description: "Identificador único del cliente"
+        tests:
+          - not_null
+          - unique
+<<<<<<< HEAD
+          - relationships:
+              to: ref('dimCliente')
+              field: customer_id
+=======
+        relationships:
+          - to: ref('dimCliente')
+            field: customer_id
+>>>>>>> 7993812 (Primer commit del proyecto walmart_dbt)
+
+      - name: customer_support_calls
+        description: "Número de llamadas al soporte"
+        tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              min_value: 0
+<<<<<<< HEAD
+              inclusive: true
+=======
+              inclusive: true
+>>>>>>> 7993812 (Primer commit del proyecto walmart_dbt)
