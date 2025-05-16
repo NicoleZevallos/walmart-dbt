@@ -1,9 +1,5 @@
 WITH comportamiento AS (
-<<<<<<< HEAD
     SELECT
-=======
-    SELECT 
->>>>>>> 7993812 (Primer commit del proyecto walmart_dbt)
         customer_id,
         last_purchase_date,
         avg_purchase_value,
@@ -17,20 +13,14 @@ WITH comportamiento AS (
         frecuencia_label
     FROM {{ ref('stgComportamientoCompra') }}
 ),
-<<<<<<< HEAD
 
 dimFecha AS (
     SELECT
-=======
-dimFecha AS (
-    SELECT 
->>>>>>> 7993812 (Primer commit del proyecto walmart_dbt)
         fecha,
         MIN(fecha) AS mapped_fecha
     FROM {{ ref('dimTiempo') }}
     GROUP BY fecha
 ),
-<<<<<<< HEAD
 
 frecuenciaMapeada AS (
     SELECT *,
@@ -40,15 +30,6 @@ frecuenciaMapeada AS (
 
 joined AS (
     SELECT
-=======
-frecuenciaMapeada AS (
-    SELECT *,
-        frecuencia_label AS frecuencia_label_num
-    FROM comportamiento
-),
-joined AS (
-    SELECT 
->>>>>>> 7993812 (Primer commit del proyecto walmart_dbt)
         dc.customer_id,
         dp.loyalty_program,
         ds.customer_support_calls,
@@ -73,8 +54,4 @@ joined AS (
     LEFT JOIN {{ ref('dimTiempo') }} ft ON CAST(fc.last_purchase_date AS DATE) = ft.fecha
 )
 
-<<<<<<< HEAD
 SELECT * FROM joined
-=======
-SELECT * FROM joined;
->>>>>>> 7993812 (Primer commit del proyecto walmart_dbt)

@@ -13,8 +13,4 @@ models:
       - name: customer_city
         description: "Ciudad del cliente"
         tests:
-<<<<<<< HEAD
           - not_null
-=======
-          - not_null
->>>>>>> 7993812 (Primer commit del proyecto walmart_dbt)

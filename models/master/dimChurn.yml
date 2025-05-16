@@ -9,24 +9,13 @@ models:
         tests:
           - not_null
           - unique
-<<<<<<< HEAD
           - relationships:
               to: ref('dimCliente')
               field: customer_id
-=======
-        relationships:
-          - to: ref('dimCliente')
-            field: customer_id
->>>>>>> 7993812 (Primer commit del proyecto walmart_dbt)
 
       - name: churn_status
         description: "Estado de churn: indica si el cliente sigue activo o no"
         tests:
           - not_null
-<<<<<<< HEAD
           - accepted_values:
               values: ['Yes', 'No']
-=======
-        accepted_values:
-          values: ['Yes', 'No']
->>>>>>> 7993812 (Primer commit del proyecto walmart_dbt)

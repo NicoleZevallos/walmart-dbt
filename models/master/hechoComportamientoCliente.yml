@@ -8,16 +8,10 @@ models:
         description: "Identificador del cliente"
         tests:
           - not_null
-<<<<<<< HEAD
           - unique
           - relationships:
               to: ref('dimCliente')
               field: customer_id
-=======
-        relationships:
-          - to: ref('dimCliente')
-            field: customer_id
->>>>>>> 7993812 (Primer commit del proyecto walmart_dbt)
 
       - name: loyalty_program
         description: "Participación en programa de lealtad"
@@ -43,11 +37,7 @@ models:
               inclusive: true
 
       - name: churn_status
-<<<<<<< HEAD
         description: "Estado de churn"
-=======
-        description: "Estado de churn: indica si el cliente sigue activo o no"
->>>>>>> 7993812 (Primer commit del proyecto walmart_dbt)
         tests:
           - not_null
           - accepted_values:
@@ -57,15 +47,9 @@ models:
         description: "Fecha de última compra"
         tests:
           - not_null
-<<<<<<< HEAD
           - relationships:
               to: ref('dimTiempo')
               field: fecha
-=======
-        relationships:
-          - to: ref('dimTiempo')
-            field: fecha
->>>>>>> 7993812 (Primer commit del proyecto walmart_dbt)
 
       - name: avg_purchase_value
         description: "Valor promedio de compra"
@@ -81,11 +65,7 @@ models:
           - not_null
           - dbt_utils.accepted_range:
               min_value: 0
-<<<<<<< HEAD
               max_value: 1
-=======
-              max_value: 100
->>>>>>> 7993812 (Primer commit del proyecto walmart_dbt)
               inclusive: true
 
       - name: online_purchases

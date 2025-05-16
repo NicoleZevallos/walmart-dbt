@@ -13,8 +13,4 @@ models:
       - name: store_location
         description: "Ubicación de la tienda"
         tests:
-<<<<<<< HEAD
           - not_null
-=======
-          - not_null
->>>>>>> 7993812 (Primer commit del proyecto walmart_dbt)
